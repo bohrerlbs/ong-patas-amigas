@@ -9,6 +9,8 @@ Site da **Patas Amigas**, uma ONG fictícia de resgate, castração e adoção d
 | Exp. III | JavaScript: SPA, templates dinâmicos, validação do formulário e localStorage |
 | Exp. IV | Git/GitHub, acessibilidade (WCAG 2.1 AA), otimização e deploy |
 
+🔗 **Site no ar:** https://bohrerlbs.github.io/ong-patas-amigas/
+
 ## Funcionalidades
 
 - **Página única (SPA)**: Início, Projetos e Cadastro trocam de tela sem recarregar a página
@@ -108,6 +110,17 @@ O script `scripts/build.js`:
 | CSS (3 arquivos → 1) | 18,5 KB | 11,0 KB |
 | JS (12 arquivos → 1) | 26,2 KB | 15,7 KB |
 | Imagem | 9,1 KB | 4,8 KB |
+
+## Deploy
+
+O site é publicado no **GitHub Pages** automaticamente pelo **GitHub Actions** (`.github/workflows/deploy.yml`). Toda vez que a branch `main` recebe uma release, o workflow:
+
+1. baixa o código
+2. instala o Node.js e as dependências (`npm ci`)
+3. roda o `npm run build`
+4. publica a pasta `dist/` no GitHub Pages
+
+Assim o que está no ar é sempre a última versão estável, já otimizada.
 
 ## Como usar
 
