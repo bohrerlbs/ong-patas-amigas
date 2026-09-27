@@ -102,14 +102,27 @@ O script `scripts/build.js`:
 - junta os 12 arquivos JavaScript num só e minifica (esbuild)
 - junta os 3 arquivos CSS num só e minifica (esbuild)
 - minifica o HTML e coloca o `index.html` na raiz do `dist/` (html-minifier-terser)
-- comprime a imagem usando paleta de cores (sharp)
+- gera a imagem em WebP (formato principal) e comprime o PNG com paleta de cores, que fica de reserva pra navegador sem WebP (sharp)
 
 | Arquivo | Antes | Depois |
 |---|---|---|
 | HTML | 2,9 KB | 2,1 KB |
 | CSS (3 arquivos → 1) | 18,5 KB | 11,0 KB |
-| JS (12 arquivos → 1) | 26,2 KB | 15,7 KB |
-| Imagem | 9,1 KB | 4,8 KB |
+| JS (12 arquivos → 1) | 26,4 KB | 15,9 KB |
+| Imagem WebP (principal) | 9,1 KB | 3,2 KB |
+| Imagem PNG (reserva) | 9,1 KB | 4,8 KB |
+
+Resultado no Lighthouse (celular com 4G lenta), comparando o código de desenvolvimento com o build:
+
+| | Desenvolvimento | Produção |
+|---|---|---|
+| Performance | 98 | 100 |
+| Acessibilidade | 100 | 100 |
+| Boas práticas | 96 | 100 |
+| LCP | 1,5 s | 1,1 s |
+| CLS | 0,085 | 0 |
+| Requisições | 18 | 5 |
+| Peso total | 55 KiB | 34 KiB |
 
 ## Deploy
 

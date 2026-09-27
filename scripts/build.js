@@ -3,7 +3,7 @@
 import { build, transform } from 'esbuild';
 import { minify } from 'html-minifier-terser';
 import sharp from 'sharp';
-import { readFile, writeFile, mkdir, rm, stat } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, rm, stat, copyFile } from 'node:fs/promises';
 
 const DIST = 'dist';
 
@@ -39,7 +39,8 @@ html = html
   .replace(/\s*<link rel="stylesheet" href="\.\.\/css\/reset\.css">/, '')
   .replace(/\s*<link rel="stylesheet" href="\.\.\/css\/variaveis\.css">/, '')
   .replace('href="../css/style.css"', 'href="css/style.min.css"')
-  .replace('src="../js/main.js"', 'src="js/main.min.js"');
+  .replace('src="../js/main.js"', 'src="js/main.min.js"')
+  .replace('href="../img/favicon.svg"', 'href="img/favicon.svg"');
 
 const htmlMinificado = await minify(html, {
   collapseWhitespace: true,
@@ -48,10 +49,17 @@ const htmlMinificado = await minify(html, {
 });
 await writeFile(`${DIST}/index.html`, htmlMinificado);
 
-// 4) Imagem: comprime o PNG usando paleta de cores (o desenho tem poucas cores)
+// 4) Imagem: gera o WebP (formato principal) e comprime o PNG, que fica de reserva
+//    pra navegador sem suporte a WebP. O PNG usa paleta pq o desenho tem poucas cores.
+await sharp('img/resgate.png')
+  .webp({ quality: 80 })
+  .toFile(`${DIST}/img/resgate.webp`);
 await sharp('img/resgate.png')
   .png({ palette: true, compressionLevel: 9, effort: 10 })
   .toFile(`${DIST}/img/resgate.png`);
+
+// o favicon é um SVG pequeno, só copia
+await copyFile('img/favicon.svg', `${DIST}/img/favicon.svg`);
 
 // mostra o antes e depois de cada arquivo
 async function tamanho(caminho) {
@@ -71,7 +79,8 @@ const comparacao = [
   ['HTML', await tamanho('html/index.html'), await tamanho(`${DIST}/index.html`)],
   ['CSS (3 arquivos -> 1)', await somar(arquivosCss.map((nome) => `css/${nome}.css`)), await tamanho(`${DIST}/css/style.min.css`)],
   ['JS (12 arquivos -> 1)', await somar(modulosJs), await tamanho(`${DIST}/js/main.min.js`)],
-  ['Imagem', await tamanho('img/resgate.png'), await tamanho(`${DIST}/img/resgate.png`)],
+  ['Imagem PNG (reserva)', await tamanho('img/resgate.png'), await tamanho(`${DIST}/img/resgate.png`)],
+  ['Imagem WebP (principal)', await tamanho('img/resgate.png'), await tamanho(`${DIST}/img/resgate.webp`)],
 ];
 
 console.log('Build concluído em dist/\n');

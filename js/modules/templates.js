@@ -50,7 +50,11 @@ export function templateInicio() {
     <section>
       <h2>Sobre nós</h2>
       <div class="grid">
-        <img class="col-12 col-md-6" src="../img/resgate.png" alt="Voluntária segurando um filhote de cachorro caramelo no colo, ao lado de um gato cinza" width="600" height="400">
+        <!-- o navegador usa o WebP (mais leve) e só baixa o PNG se não suportar WebP -->
+        <picture class="col-12 col-md-6">
+          <source srcset="../img/resgate.webp" type="image/webp">
+          <img src="../img/resgate.png" alt="Voluntária segurando um filhote de cachorro caramelo no colo, ao lado de um gato cinza" width="600" height="400">
+        </picture>
         <p class="col-12 col-md-6">A Patas Amigas é uma ONG sem fins lucrativos que começou com um grupo de vizinhos cuidando dos animais abandonados do bairro. Hoje a gente tem um abrigo temporário e vários lares provisórios.</p>
       </div>
     </section>

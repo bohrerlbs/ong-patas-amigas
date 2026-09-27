@@ -576,6 +576,12 @@ input[type="checkbox"] {
   padding: var(--esp-4) var(--esp-3);
 }
 
+/* o <main> começa vazio e o JS coloca o conteúdo depois.
+   Com essa altura mínima o rodapé já nasce lá embaixo e não "pula" (CLS) */
+#app {
+  min-height: 100vh;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
