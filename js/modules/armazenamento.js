@@ -40,3 +40,16 @@ export function lerRascunho() {
 export function apagarRascunho() {
   localStorage.removeItem(CHAVE_RASCUNHO);
 }
+
+// ---------- preferência de alto contraste ----------
+const CHAVE_CONTRASTE = 'patasAmigas.altoContraste';
+
+// devolve true, false ou null (quando a pessoa ainda não escolheu)
+export function lerPreferenciaContraste() {
+  const valor = localStorage.getItem(CHAVE_CONTRASTE);
+  return valor === null ? null : valor === 'true';
+}
+
+export function salvarPreferenciaContraste(ligado) {
+  localStorage.setItem(CHAVE_CONTRASTE, ligado);
+}
