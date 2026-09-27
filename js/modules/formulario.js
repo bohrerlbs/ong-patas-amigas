@@ -116,7 +116,6 @@ function enviarFormulario(evento) {
 
   if (comErro.length > 0) {
     alerta.innerHTML = templateAlerta('erro', 'Ops!', `Tem ${comErro.length} campo(s) com erro. Confira as mensagens em vermelho.`);
-    alerta.focus();
     comErro[0].focus();
     return;
   }

@@ -23,6 +23,15 @@ Site da **Patas Amigas**, uma ONG fictícia de resgate, castração e adoção d
 - Modal, alertas, badges e notificação (toast)
 - Layout responsivo do celular até telas grandes
 
+## Acessibilidade
+
+O site foi revisado seguindo a **WCAG 2.1 nível AA**:
+
+- **Teclado:** tudo funciona só com Tab, Enter e Esc. Tem o link "Pular para o conteúdo", foco sempre visível e o menu fechado não recebe foco.
+- **Leitor de tela:** HTML semântico, textos alternativos, `aria-expanded`/`aria-pressed` nos botões, `aria-current` no link da tela aberta, mensagens de erro ligadas aos campos com `aria-describedby` e resumo de erros anunciado com `role="alert"`.
+- **Contraste:** todas as cores passam de 4,5:1 e tem um **modo de alto contraste** (botão no topo da página), que também liga sozinho se o sistema estiver configurado pra mais contraste. A escolha fica salva no navegador.
+- **Movimento:** as animações são desligadas pra quem ativou "reduzir movimento" no sistema.
+
 ## Tecnologias
 
 - HTML5
@@ -55,6 +64,14 @@ ong-patas-amigas/
         ├── modal.js        modal dos termos
         └── toast.js        notificação
 ```
+
+## Pré-requisitos
+
+- [Git](https://git-scm.com/) pra clonar o repositório
+- Um navegador atualizado (Chrome, Firefox ou Edge)
+- [VS Code](https://code.visualstudio.com/) com a extensão **Live Server**, ou qualquer outro servidor local
+
+O projeto não tem dependências pra instalar (não usa npm nem bibliotecas externas).
 
 ## Como rodar o projeto
 

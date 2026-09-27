@@ -49,3 +49,33 @@
   --raio: 8px;
   --sombra: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
+
+/* =========================================
+   MODO ALTO CONTRASTE
+   o acessibilidade.js coloca data-contraste="alto" no <html>.
+   Fundo preto, texto branco e destaques em amarelo
+   (todas as combinações passam de 7:1)
+   ========================================= */
+:root[data-contraste="alto"] {
+  --cor-primaria: #FFFF00;
+  --cor-primaria-escura: #FFFF00;
+  --cor-primaria-clara: #000000;
+
+  --cor-secundaria: #FFFF00;
+  --cor-secundaria-clara: #000000;
+
+  --cor-texto: #FFFFFF;
+  --cor-texto-suave: #FFFFFF;
+  --cor-borda: #FFFFFF;
+  --cor-fundo: #000000;
+  --cor-branco: #000000;
+
+  --cor-sucesso: #7CFC00;
+  --cor-erro: #FF8A8A;
+  --cor-aviso: #FFFF00;
+  --cor-fundo-sucesso: #000000;
+  --cor-fundo-erro: #000000;
+  --cor-fundo-aviso: #000000;
+
+  --sombra: none;
+}

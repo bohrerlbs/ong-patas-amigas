@@ -9,8 +9,16 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+  <!-- primeiro item do Tab: pula o menu e vai direto pro conteúdo (acessibilidade.js) -->
+  <a href="#app" class="pular-conteudo">Pular para o conteúdo</a>
+
   <header class="cabecalho">
     <p class="logo">ONG Patas Amigas</p>
+
+    <!-- liga e desliga o modo de alto contraste (acessibilidade.js) -->
+    <button type="button" class="botao-contraste" aria-pressed="false">
+      <span aria-hidden="true">&#9680;</span> Alto contraste
+    </button>
 
     <button type="button" class="menu-botao" aria-expanded="false" aria-controls="menu-principal">
       <span aria-hidden="true">&#9776;</span>
