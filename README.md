@@ -56,6 +56,14 @@ ong-patas-amigas/
         └── toast.js        notificação
 ```
 
+## Pré-requisitos
+
+- [Git](https://git-scm.com/) pra clonar o repositório
+- Um navegador atualizado (Chrome, Firefox ou Edge)
+- [VS Code](https://code.visualstudio.com/) com a extensão **Live Server**, ou qualquer outro servidor local
+
+O projeto não tem dependências pra instalar (não usa npm nem bibliotecas externas).
+
 ## Como rodar o projeto
 
 Como o JavaScript usa `import` e `export`, o site precisa ser aberto por um servidor local (abrindo o arquivo direto com dois cliques os módulos são bloqueados pelo navegador).
