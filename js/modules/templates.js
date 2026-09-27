@@ -135,7 +135,8 @@ export function templateCadastro() {
     ${templateAlerta('info', 'Fica tranquilo:', 'seus dados são usados só pela Patas Amigas pra entrar em contato com você.')}
 
     <!-- o alerta de erro aparece aqui quando o envio dá errado -->
-    <div id="form-alerta" tabindex="-1"></div>
+    <!-- role="alert" faz o leitor de tela anunciar o erro mesmo com o foco indo pro campo -->
+    <div id="form-alerta" role="alert"></div>
 
     <form id="form-cadastro" novalidate>
       <fieldset>
