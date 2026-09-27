@@ -127,12 +127,16 @@ footer {
   width: 100%;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  /* visibility: hidden tira os links escondidos da ordem do Tab
+     (só max-height: 0 deixava o foco "sumir" dentro do menu fechado) */
+  visibility: hidden;
+  transition: max-height 0.3s ease, visibility 0.3s;
 }
 
 /* o menu.js coloca a classe "aberto" quando clica no botão */
 .cabecalho nav.aberto {
   max-height: 500px;
+  visibility: visible;
 }
 
 .menu {
@@ -595,6 +599,7 @@ input[type="checkbox"] {
     width: auto;
     max-height: none;
     overflow: visible;
+    visibility: visible;
   }
 
   .menu {
