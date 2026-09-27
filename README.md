@@ -71,7 +71,7 @@ ong-patas-amigas/
 - Um navegador atualizado (Chrome, Firefox ou Edge)
 - [VS Code](https://code.visualstudio.com/) com a extensão **Live Server**, ou qualquer outro servidor local
 
-O projeto não tem dependências pra instalar (não usa npm nem bibliotecas externas).
+Pra rodar o site em desenvolvimento não precisa instalar nada: o código do site não usa bibliotecas externas. O Node.js só é necessário pra gerar o build de produção (veja abaixo).
 
 ## Como rodar o projeto
 
@@ -83,6 +83,31 @@ Como o JavaScript usa `import` e `export`, o site precisa ser aberto por um serv
    ```
 2. Abra a pasta no **VS Code** e instale a extensão **Live Server** (Ritwick Dey).
 3. Clique com o botão direito em `html/index.html` e escolha **Open with Live Server**.
+
+## Build de produção
+
+O site em produção usa uma versão otimizada, gerada na pasta `dist/` (que não vai pro repositório).
+
+Pra gerar, precisa do [Node.js](https://nodejs.org/) instalado:
+
+```bash
+npm install
+npm run build
+```
+
+O script `scripts/build.js`:
+
+- junta os 12 arquivos JavaScript num só e minifica (esbuild)
+- junta os 3 arquivos CSS num só e minifica (esbuild)
+- minifica o HTML e coloca o `index.html` na raiz do `dist/` (html-minifier-terser)
+- comprime a imagem usando paleta de cores (sharp)
+
+| Arquivo | Antes | Depois |
+|---|---|---|
+| HTML | 2,9 KB | 2,1 KB |
+| CSS (3 arquivos → 1) | 18,5 KB | 11,0 KB |
+| JS (12 arquivos → 1) | 26,2 KB | 15,7 KB |
+| Imagem | 9,1 KB | 4,8 KB |
 
 ## Como usar
 
