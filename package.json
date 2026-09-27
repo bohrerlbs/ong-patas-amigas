@@ -1,0 +1,20 @@
+{
+  "name": "ong-patas-amigas",
+  "version": "1.1.0",
+  "description": "Site da ONG fictícia Patas Amigas - projeto da disciplina de Desenvolvimento Front-End para Web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bohrerlbs/ong-patas-amigas.git"
+  },
+  "author": "Leonardo Bohrer",
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "html-minifier-terser": "^7.2.0",
+    "sharp": "^0.35.5"
+  }
+}
