@@ -102,4 +102,4 @@ Os commits seguem o padrão de **commits semânticos**:
 
 ## Autor
 
-Leonardo Bohrer - estudante de Ciência da Computação
+Leonardo Bohrer
