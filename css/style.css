@@ -65,6 +65,7 @@ footer {
 }
 
 .logo {
+  flex-grow: 1;
   margin: 0;
   font-size: var(--fs-h3);
   font-weight: bold;
@@ -92,6 +93,30 @@ footer {
   outline-offset: 2px;
 }
 
+/* Botão de alto contraste (quem liga é o acessibilidade.js) */
+.botao-contraste {
+  order: 2;
+  padding: var(--esp-1) var(--esp-2);
+  border: 2px solid var(--cor-branco);
+  border-radius: var(--raio);
+  background: none;
+  color: var(--cor-branco);
+  font-size: var(--fs-pequeno);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.botao-contraste:focus-visible {
+  outline: 3px solid var(--cor-branco);
+  outline-offset: 2px;
+}
+
+/* quando está ligado, o botão fica "preenchido" */
+.botao-contraste[aria-pressed="true"] {
+  background-color: var(--cor-branco);
+  color: var(--cor-primaria);
+}
+
 /* Texto só pra leitor de tela (fica invisível na tela) */
 .sr-only {
   position: absolute;
@@ -106,6 +131,7 @@ footer {
 
 /* botão hambúrguer (quem abre e fecha é o menu.js) */
 .menu-botao {
+  order: 3;
   display: block;
   padding: var(--esp-1) var(--esp-2);
   border: none;
@@ -124,6 +150,7 @@ footer {
 
 /* no celular o nav ocupa a linha toda e começa fechado */
 .cabecalho nav {
+  order: 4;
   width: 100%;
   max-height: 0;
   overflow: hidden;
@@ -294,6 +321,7 @@ legend {
   font-family: inherit;
   font-size: var(--fs-base);
   background-color: var(--cor-branco);
+  color: var(--cor-texto);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -468,6 +496,7 @@ input[type="checkbox"] {
 
 .modal-caixa {
   position: relative;
+  color: var(--cor-texto);
   max-width: 500px;
   padding: var(--esp-5);
   background-color: var(--cor-branco);
@@ -590,12 +619,17 @@ input[type="checkbox"] {
     gap: var(--esp-4);
   }
 
+  .botao-contraste {
+    order: 3;
+  }
+
   /* menu volta a ser horizontal e o hambúrguer some */
   .menu-botao {
     display: none;
   }
 
   .cabecalho nav {
+    order: 2;
     width: auto;
     max-height: none;
     overflow: visible;
@@ -688,4 +722,33 @@ input[type="checkbox"] {
     gap: var(--esp-5);
     margin-bottom: var(--esp-6);
   }
+}
+
+/* =========================================
+   AJUSTES DO ALTO CONTRASTE
+   ========================================= */
+
+/* no alto contraste o "anel" do foco seria preto no fundo preto,
+   então todo foco vira um contorno amarelo bem grosso */
+[data-contraste="alto"] :focus-visible,
+[data-contraste="alto"] .campo input:focus,
+[data-contraste="alto"] .campo select:focus,
+[data-contraste="alto"] .campo textarea:focus {
+  outline: 3px solid #FFFF00;
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+/* links sempre sublinhados, pra não depender só da cor */
+[data-contraste="alto"] a {
+  text-decoration: underline;
+}
+
+[data-contraste="alto"] .menu a:hover,
+[data-contraste="alto"] .menu a[aria-current="page"] {
+  outline: 2px solid var(--cor-branco);
+}
+
+[data-contraste="alto"] img {
+  border: 2px solid var(--cor-borda);
 }
