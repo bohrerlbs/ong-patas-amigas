@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patas Amigas</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variaveis.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="cabecalho">
+    <p class="logo">ONG Patas Amigas</p>
+
+    <button type="button" class="menu-botao" aria-expanded="false" aria-controls="menu-principal">
+      <span aria-hidden="true">&#9776;</span>
+      <span class="sr-only">Abrir menu</span>
+    </button>
+
+    <nav id="menu-principal" aria-label="Menu principal">
+      <ul class="menu">
+        <li><a href="#/inicio">Início</a></li>
+        <li class="tem-submenu">
+          <a href="#/projetos">Projetos</a>
+          <ul class="submenu">
+            <li><a href="#/projetos/resgate">Resgate Responsável</a></li>
+            <li><a href="#/projetos/castracao">Castração Solidária</a></li>
+            <li><a href="#/projetos/feira">Feira de Adoção</a></li>
+          </ul>
+        </li>
+        <li><a href="#/cadastro">Cadastro</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- o conteúdo de cada tela é colocado aqui pelo JavaScript (rotas.js) -->
+  <main id="app" class="container" tabindex="-1">
+    <noscript>
+      <p>Esse site precisa do JavaScript ativado pra funcionar.</p>
+    </noscript>
+  </main>
+
+  <footer class="rodape">
+    <p>&copy; 2026 ONG Patas Amigas</p>
+  </footer>
+
+  <!-- notificação que aparece no canto (toast.js) -->
+  <div id="toast" class="toast" role="status">
+    <p id="toast-texto"></p>
+    <button type="button" class="toast-fechar" aria-label="Fechar notificação">&times;</button>
+  </div>
+
+  <!-- modal dos termos, aberto pelo modal.js -->
+  <dialog id="modal-termos" class="modal" aria-labelledby="modal-titulo">
+    <div class="modal-caixa">
+      <button type="button" class="modal-fechar" aria-label="Fechar">&times;</button>
+      <h2 id="modal-titulo">Termos de uso dos dados</h2>
+      <p>Os dados que você preencher aqui vão ser usados só pela equipe da Patas Amigas pra entrar em contato sobre voluntariado e doações.</p>
+      <p>A gente não passa seus dados pra ninguém e você pode pedir pra apagar eles quando quiser, mandando um e-mail pra contato@patasamigas.org.br.</p>
+      <button type="button" class="botao modal-ok">Entendi</button>
+    </div>
+  </dialog>
+
+  <script type="module" src="../js/main.js"></script>
+</body>
+</html>

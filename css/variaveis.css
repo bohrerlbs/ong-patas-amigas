@@ -1,0 +1,51 @@
+/* =========================================
+   DESIGN SYSTEM - ONG Patas Amigas
+   ========================================= */
+:root {
+  /* Cores primárias (laranja) */
+  --cor-primaria: #B4501A;
+  --cor-primaria-escura: #8F3F14;
+  --cor-primaria-clara: #FDE6D5;
+
+  /* Cores secundárias (verde) */
+  --cor-secundaria: #2D6E60;
+  --cor-secundaria-clara: #DCEFE9;
+
+  /* Neutras */
+  --cor-texto: #2B2B2B;
+  --cor-texto-suave: #595959;
+  --cor-borda: #D9D2CA;
+  --cor-fundo: #FFF8F1;
+  --cor-branco: #FFFFFF;
+
+  /* Feedback */
+  --cor-sucesso: #2E7D32;
+  --cor-erro: #C62828;
+  --cor-aviso: #7A4F00;
+  --cor-fundo-sucesso: #E8F5E9;
+  --cor-fundo-erro: #FDECEC;
+  --cor-fundo-aviso: #FFF4D6;
+
+  /* Tipografia (escala 1.25 com base 16px) */
+  --fonte-base: "Segoe UI", Arial, Helvetica, sans-serif;
+  --fs-pequeno: 0.875rem;  /* 14px */
+  --fs-base: 1rem;         /* 16px */
+  --fs-h3: 1.25rem;        /* 20px */
+  --fs-h2: 1.563rem;       /* 25px */
+  --fs-h1: 1.953rem;       /* 31px */
+  --fs-destaque: 2.441rem; /* 39px */
+  --altura-linha: 1.6;
+
+  /* Espaçamentos (múltiplos de 8px) */
+  --esp-1: 0.25rem; /* 4px */
+  --esp-2: 0.5rem;  /* 8px */
+  --esp-3: 1rem;    /* 16px */
+  --esp-4: 1.5rem;  /* 24px */
+  --esp-5: 2rem;    /* 32px */
+  --esp-6: 3rem;    /* 48px */
+  --esp-7: 4rem;    /* 64px */
+
+  /* Outros */
+  --raio: 8px;
+  --sombra: 0 2px 8px rgba(0, 0, 0, 0.1);
+}

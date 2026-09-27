@@ -1,0 +1,665 @@
+/* =========================================
+   ESTILOS DO SITE
+   (as variáveis ficam no variaveis.css e o reset no reset.css)
+   ========================================= */
+
+body {
+  font-family: var(--fonte-base);
+  font-size: var(--fs-base);
+  line-height: var(--altura-linha);
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo);
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  margin: 0 0 var(--esp-3);
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  color: var(--cor-primaria-escura);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+  color: var(--cor-secundaria);
+}
+
+h3 {
+  font-size: var(--fs-h3);
+}
+
+p {
+  margin: 0 0 var(--esp-3);
+}
+
+a {
+  color: var(--cor-primaria);
+}
+
+a:hover {
+  color: var(--cor-primaria-escura);
+}
+
+small,
+footer {
+  font-size: var(--fs-pequeno);
+}
+
+/* =========================================
+   COMPONENTES COM FLEXBOX
+   ========================================= */
+
+/* Cabeçalho: logo de um lado e menu do outro */
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: var(--esp-3);
+  padding: var(--esp-3) var(--esp-4);
+  background-color: var(--cor-primaria);
+}
+
+.logo {
+  margin: 0;
+  font-size: var(--fs-h3);
+  font-weight: bold;
+  color: var(--cor-branco);
+}
+
+/* Texto só pra leitor de tela (fica invisível na tela) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+/* ---------- MENU (mobile first) ---------- */
+
+/* botão hambúrguer (quem abre e fecha é o menu.js) */
+.menu-botao {
+  display: block;
+  padding: var(--esp-1) var(--esp-2);
+  border: none;
+  background: none;
+  color: var(--cor-branco);
+  font-size: var(--fs-h2);
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* mostra onde está o foco quando navega pelo teclado */
+.menu-botao:focus-visible {
+  outline: 3px solid var(--cor-branco);
+  outline-offset: 2px;
+}
+
+/* no celular o nav ocupa a linha toda e começa fechado */
+.cabecalho nav {
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+/* o menu.js coloca a classe "aberto" quando clica no botão */
+.cabecalho nav.aberto {
+  max-height: 500px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-2);
+  margin: 0;
+  padding: var(--esp-2) 0;
+  list-style: none;
+}
+
+.menu a {
+  display: block;
+  padding: var(--esp-2);
+  color: var(--cor-branco);
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: var(--raio);
+}
+
+.menu a:hover,
+.menu a:focus-visible {
+  color: var(--cor-branco);
+  background-color: var(--cor-primaria-escura);
+}
+
+.menu a:focus-visible {
+  outline: 3px solid var(--cor-branco);
+}
+
+/* link da tela que está aberta (o rotas.js coloca o aria-current) */
+.menu a[aria-current="page"] {
+  background-color: var(--cor-primaria-escura);
+}
+
+/* no celular o submenu aparece aberto, só com recuo */
+.submenu {
+  margin: 0;
+  padding: 0 0 0 var(--esp-4);
+  list-style: none;
+}
+
+.submenu a {
+  font-weight: normal;
+}
+
+/* Cards: conteúdo em coluna e o botão sempre no final */
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--esp-4);
+  background-color: var(--cor-branco);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* card "sobe" um pouco quando passa o mouse */
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--cor-primaria);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* card com destaque quando algum link dentro dele recebe foco pelo teclado */
+.card:focus-within {
+  border-color: var(--cor-primaria);
+}
+
+/* card destacado quando vem pelo submenu (ex: #/projetos/feira) */
+.card.destaque {
+  border: 2px solid var(--cor-primaria);
+  background-color: var(--cor-primaria-clara);
+}
+
+.card .acao {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+/* Botão: texto centralizado dentro */
+.botao {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--esp-2) var(--esp-4);
+  border: none;
+  border-radius: var(--raio);
+  background-color: var(--cor-primaria);
+  color: var(--cor-branco);
+  font-size: var(--fs-base);
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+}
+
+.botao:hover {
+  background-color: var(--cor-primaria-escura);
+  color: var(--cor-branco);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+.botao:focus-visible {
+  outline: 3px solid var(--cor-primaria-escura);
+  outline-offset: 3px;
+}
+
+/* quando clica o botão "afunda" */
+.botao:active {
+  background-color: var(--cor-primaria-escura);
+  box-shadow: none;
+  transform: translateY(1px);
+}
+
+/* botão desativado: apagado e sem efeito de hover */
+.botao:disabled {
+  background-color: var(--cor-texto-suave);
+  opacity: 0.6;
+  box-shadow: none;
+  transform: none;
+  cursor: not-allowed;
+}
+
+/* Formulário: label em cima do campo */
+fieldset {
+  margin: 0 0 var(--esp-4);
+  padding: var(--esp-4);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background-color: var(--cor-branco);
+}
+
+legend {
+  padding: 0 var(--esp-2);
+  font-weight: bold;
+  color: var(--cor-secundaria);
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-1);
+  margin-bottom: var(--esp-3);
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  padding: var(--esp-2);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  font-family: inherit;
+  font-size: var(--fs-base);
+  background-color: var(--cor-branco);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* campo em foco: borda verde e um "anel" em volta */
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  outline: none;
+  border-color: var(--cor-secundaria);
+  box-shadow: 0 0 0 3px var(--cor-secundaria-clara);
+}
+
+/* o formulario.js coloca "com-erro" ou "ok" na div do campo */
+.campo.com-erro input,
+.campo.com-erro select {
+  border-color: var(--cor-erro);
+  background-color: var(--cor-fundo-erro);
+}
+
+.campo.ok input,
+.campo.ok select {
+  border-color: var(--cor-sucesso);
+}
+
+/* mensagem de erro escrita (não depende só da cor) */
+.erro-msg {
+  display: none;
+  color: var(--cor-erro);
+  font-size: var(--fs-pequeno);
+}
+
+.com-erro .erro-msg {
+  display: block;
+}
+
+.contador {
+  color: var(--cor-texto-suave);
+}
+
+/* botão que parece link (usado no "Ler os termos") */
+.link-botao {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--cor-primaria);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* radio e checkbox com a cor do site */
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: var(--cor-primaria);
+  width: 18px;
+  height: 18px;
+}
+
+/* Radio e checkbox alinhados com o texto */
+.opcoes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-2);
+  margin-bottom: var(--esp-3);
+}
+
+.opcao {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-2);
+  margin-bottom: var(--esp-3);
+}
+
+.opcoes .opcao {
+  margin-bottom: 0;
+}
+
+/* Rodapé: conteúdo centralizado */
+.rodape {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--esp-4);
+  background-color: var(--cor-texto);
+  color: var(--cor-branco);
+}
+
+.rodape p {
+  margin: 0;
+}
+
+/* =========================================
+   COMPONENTES DE FEEDBACK
+   ========================================= */
+
+/* ---------- Badges ---------- */
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--esp-2);
+  margin-bottom: var(--esp-3);
+}
+
+.badge {
+  display: inline-block;
+  padding: var(--esp-1) var(--esp-2);
+  border-radius: 999px;
+  font-size: var(--fs-pequeno);
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.badge-sucesso {
+  background-color: var(--cor-sucesso);
+  color: var(--cor-branco);
+}
+
+.badge-info {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-branco);
+}
+
+.badge-aviso {
+  background-color: var(--cor-fundo-aviso);
+  color: var(--cor-aviso);
+  border: 1px solid var(--cor-aviso);
+}
+
+.badge-erro {
+  background-color: var(--cor-erro);
+  color: var(--cor-branco);
+}
+
+/* ---------- Alertas ---------- */
+.alerta {
+  margin-bottom: var(--esp-4);
+  padding: var(--esp-3);
+  border-left: 6px solid;
+  border-radius: var(--raio);
+}
+
+.alerta-sucesso {
+  background-color: var(--cor-fundo-sucesso);
+  border-color: var(--cor-sucesso);
+}
+
+.alerta-erro {
+  background-color: var(--cor-fundo-erro);
+  border-color: var(--cor-erro);
+}
+
+.alerta-aviso {
+  background-color: var(--cor-fundo-aviso);
+  border-color: var(--cor-aviso);
+}
+
+.alerta-info {
+  background-color: var(--cor-secundaria-clara);
+  border-color: var(--cor-secundaria);
+}
+
+/* ---------- Modal (<dialog> aberto pelo modal.js) ---------- */
+.modal {
+  max-width: 500px;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-caixa {
+  position: relative;
+  max-width: 500px;
+  padding: var(--esp-5);
+  background-color: var(--cor-branco);
+  border-radius: var(--raio);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  animation: aparecer 0.3s ease;
+}
+
+.modal-fechar,
+.toast-fechar {
+  position: absolute;
+  top: var(--esp-2);
+  right: var(--esp-3);
+  color: var(--cor-texto);
+  border: none;
+  background: none;
+  font-size: var(--fs-h2);
+  line-height: 1;
+  cursor: pointer;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Toast (o toast.js coloca a classe "visivel") ---------- */
+.toast {
+  position: fixed;
+  right: var(--esp-3);
+  bottom: var(--esp-3);
+  z-index: 90;
+  max-width: 320px;
+  padding: var(--esp-3) var(--esp-6) var(--esp-3) var(--esp-3);
+  background-color: var(--cor-texto);
+  color: var(--cor-branco);
+  border-left: 6px solid var(--cor-sucesso);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+.toast.visivel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.toast p {
+  margin: 0;
+}
+
+.toast-fechar {
+  color: var(--cor-branco);
+}
+
+.rodape a {
+  color: var(--cor-branco);
+}
+
+/* =========================================
+   LAYOUT - GRID DE 12 COLUNAS
+   (mobile first: no celular tudo ocupa as 12 colunas)
+   ========================================= */
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--esp-4) var(--esp-3);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--esp-3);
+  margin-bottom: var(--esp-5);
+}
+
+.col-12 {
+  grid-column: span 12;
+}
+
+/* =========================================
+   BREAKPOINTS
+   ========================================= */
+
+/* 1) Celular grande - 576px */
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+
+  .grid {
+    gap: var(--esp-4);
+  }
+}
+
+/* 2) Tablet - 768px: começa a ter 2 colunas */
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+    padding: var(--esp-5) var(--esp-4);
+  }
+
+  .col-md-6 {
+    grid-column: span 6;
+  }
+
+  .opcoes {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--esp-4);
+  }
+
+  /* menu volta a ser horizontal e o hambúrguer some */
+  .menu-botao {
+    display: none;
+  }
+
+  .cabecalho nav {
+    width: auto;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .menu {
+    flex-direction: row;
+    gap: var(--esp-3);
+    padding: 0;
+  }
+
+  /* dropdown: o submenu fica escondido embaixo do "Projetos" */
+  .tem-submenu {
+    position: relative;
+  }
+
+  .submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    min-width: 220px;
+    padding: var(--esp-2);
+    background-color: var(--cor-branco);
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  }
+
+  /* abre passando o mouse ou navegando com o Tab */
+  .tem-submenu:hover .submenu,
+  .tem-submenu:focus-within .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .submenu a {
+    color: var(--cor-texto);
+  }
+
+  .submenu a:hover,
+  .submenu a:focus-visible {
+    color: var(--cor-branco);
+    background-color: var(--cor-primaria);
+  }
+
+  .submenu a:focus-visible {
+    outline-color: var(--cor-primaria-escura);
+  }
+}
+
+/* 3) Notebook - 992px: 3 colunas */
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+
+  .col-lg-4 {
+    grid-column: span 4;
+  }
+
+  .col-lg-6 {
+    grid-column: span 6;
+  }
+}
+
+/* 4) Desktop - 1200px: título principal maior */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+
+  .titulo-destaque {
+    font-size: var(--fs-destaque);
+  }
+}
+
+/* 5) Telas grandes - 1400px: mais espaço entre as partes */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+
+  .grid {
+    gap: var(--esp-5);
+    margin-bottom: var(--esp-6);
+  }
+}
