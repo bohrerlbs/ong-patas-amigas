@@ -71,6 +71,27 @@ footer {
   color: var(--cor-branco);
 }
 
+/* Link "Pular para o conteúdo": fica escondido em cima da tela
+   e só aparece quando recebe foco pelo Tab */
+.pular-conteudo {
+  position: absolute;
+  top: var(--esp-2);
+  left: var(--esp-2);
+  z-index: 200;
+  padding: var(--esp-2) var(--esp-3);
+  background-color: var(--cor-texto);
+  color: var(--cor-branco);
+  font-weight: bold;
+  border-radius: var(--raio);
+  transform: translateY(-200%);
+}
+
+.pular-conteudo:focus {
+  transform: translateY(0);
+  outline: 3px solid var(--cor-primaria);
+  outline-offset: 2px;
+}
+
 /* Texto só pra leitor de tela (fica invisível na tela) */
 .sr-only {
   position: absolute;
